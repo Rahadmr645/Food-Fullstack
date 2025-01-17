@@ -1,0 +1,20 @@
+
+.counter-container{
+    position: absolute;
+    bottom: 30px ;
+    right: 30px;
+}
+.counter-container img {
+    cursor: pointer;
+}
+.counter-div {
+    display: flex;
+    gap: 10px;
+    border-radius: 10px;
+    background: linear-gradient(to right, tomato,green);
+}
+
+.counter-div p {
+    color: tomato;
+    font-weight: bold;
+}

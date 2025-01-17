@@ -1,0 +1,59 @@
+.menu-container {
+  width: 100%;
+  margin-top: 10px;
+  overflow: auto;
+
+}
+
+.manu-items {
+  display: flex;
+  width: 100%;
+  gap: 50px;
+  overflow-x: scroll;
+  cursor: pointer;
+  scrollbar-color: red green;
+  width: 100%;
+  position: relative;
+  scroll-behavior: smooth;
+  margin-top: 20px;
+  padding-bottom: 10px;
+  
+}
+.manu-items::-webkit-scrollbar{
+  background-color: green;
+  cursor: pointer;
+  border-radius: 10px;
+ 
+}
+.manu-item img{
+  width: 120px;
+}
+.manu-item p {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.actives {
+  border: 3px solid tomato;
+  border-radius: 50%;
+}
+
+.menu-container p {
+  max-width: 600px;
+}
+
+/* respnsov for phone */
+
+@media (max-width: 475px) {
+
+  .menu-container {
+    width: 440px;
+  }
+
+  .manu-item img {
+    width: 70px;
+    height: 70px;
+  }
+   
+}

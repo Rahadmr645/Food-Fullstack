@@ -1,0 +1,126 @@
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    height: 19vh;
+    align-items: center;
+    padding-top: 50px;
+    margin-bottom: 20px;
+   
+}
+
+.middle ul {
+    display: flex;
+    list-style: none;
+    gap: 50px;
+    align-items: center;
+}
+
+.middle ul a {
+    cursor: pointer;
+    font-size: 1.3rem;
+    
+}
+.middle ul a:hover {
+    color: tomato;
+    
+}
+.right {
+    display: flex;
+    gap: 30px;
+}
+
+.right button {
+    border: 1px solid green;
+    border-radius: 20px;
+    background: transparent;
+    width: 150px;
+    padding: 5px;
+}
+
+.right button:hover {
+    transform: scale(1.07);
+}
+
+.borders {
+    border-bottom: 2px solid tomato !important;
+    color: white;
+    cursor: pointer;
+}
+
+.basket {
+    position: relative;
+    cursor: pointer;
+}
+
+.dot {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background-color: tomato;
+    top: 0px;
+    right: -2px;
+    border-radius: 50%;
+   
+}
+
+
+.right img {
+    cursor: pointer;
+}
+ a {
+    text-decoration: none;
+    color: white;
+ }
+
+/* Navbar responsive for phone */
+
+@media (max-width: 475px) {
+    .navbar-container {
+        width: 505px;
+        margin-right: 0px;
+        display: flex;
+        flex-direction: column;
+        background: linear-gradient(to right, green, tomato);
+        height: auto;
+        align-items: start;
+        gap: 10px;
+        margin-top: 0px;
+        padding: 10px;
+        position: relative;
+    
+    }
+
+    .middle ul {
+        display: flex;
+       
+        padding-left: 0px;
+        gap: 30px;
+        padding-top: 15px;
+        width: 100%;
+    }
+
+    .left img {
+        width: 100px;
+        align-items: start;
+        display: flex;
+    }
+
+    .right {
+        display: flex;
+        position: absolute;
+        right: 0px;
+        align-items: start;
+        gap: 20px;
+    }
+
+    .right>img {
+        width: 30px;
+    }
+
+    .right button {
+        width: 100px;
+        padding-left: 5px;
+    }
+
+}
