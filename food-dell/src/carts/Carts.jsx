@@ -5,16 +5,16 @@ import { Link } from 'react-router-dom';
 const Carts = () => {
 
   const { cartItems, removeFromCart, food_list,Subtotal,deliveryFee,Total } = useContext(StoreContext);
- 
+
   // calculate subtotal and total 
 
-  
+
 
   return (
     <div className='container cart-container'>
       <h1>Carts</h1>
       <div className="cart-items">
-        <div className="carts-item-title cart-title">
+      <div className="carts-item-title cart-title">
           <p>Item</p>
           <p>Title</p>
           <p>Price</p>
@@ -23,8 +23,8 @@ const Carts = () => {
           <p>Remove</p>
         </div>
         <hr className='title-hr' />
-        
-      {Object.keys(cartItems).length === 0 && <h1
+
+        {Object.keys(cartItems).length === 0 && <h1
       style={{marginTop:'30px',color:'tomato',marginLeft:'100px',width:'300px'}}>Oops,<br/>no
       pruduct in your cart</h1>}
 
@@ -50,7 +50,7 @@ const Carts = () => {
       </div>
       <div className='carts-bottom'>
         <div className='carts-totals'>
-          <h1 style={{marginBottom:'20px'}}>Carts Total</h1>
+        <h1 style={{marginBottom:'20px'}}>Carts Total</h1>
           <div className='carts-total-para'>
             <h4>Subtotal</h4>
             <p>${Subtotal}</p>
@@ -62,7 +62,7 @@ const Carts = () => {
           </div>
           <hr className='totals-hr' />
           <div className='carts-total-para'>
-            <h4 style={{color:'tomato'}}>Total</h4>
+          <h4 style={{color:'tomato'}}>Total</h4>
             <p>${Total}</p>
           </div>
         <Link to='/checkout'  > <button>PROCEED TO CHECKOUT</button>
