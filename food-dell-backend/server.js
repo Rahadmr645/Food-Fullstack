@@ -9,6 +9,8 @@ import  foodRouter from './routes/foodRoute.js';
 const PORT = 4420;
 
 app.use(express.json());
+app.use('/uploads', express.static('uploads'));
+
 // router end point 
 app.use('/api/food', foodRouter);
 // connect to the db 
