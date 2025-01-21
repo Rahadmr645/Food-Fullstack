@@ -1,76 +1,110 @@
-
-
 .add {
     width: 70%;
-    margin-left: max(5vw,25px);
-    margin-top: 50px;
+    margin-left: max(5vw, 25px);
+    margin-top: 30px;
     font-size: 16px;
 }
-.add form {
-    gap: 20px;
-}
+
 
 .add-img-upload img {
     width: 120px;
+    border-radius: 5px;
+    cursor: pointer;
 }
 
-.add-product-name,.add-product-description {
-    width: 50%;
+.add-product-name,
+.add-product-description {
+    width: 40%;
+
 }
-.add-product-name{
-    width: 100px;
-}
-.add-product-name input ,.add-product-description textarea{
+
+.add-product-name input,
+.add-product-description textarea {
     padding: 10px;
+    width: 90%;
+    border-radius: 5px;
+    border: none;
 }
+
 .add.flex-col {
     display: flex;
     flex-direction: column;
-    gap: 10px;
 }
 
-
-
-@media (max-width:475px){
-  .add-product-name,.add-product-description{
-    width: 250px;
-}
-.add-product-name input,.add-product-description textarea{
-   width: 220px;
-}
-.add form {
-    gap: 10px;
-}
-.add {
-    width: 70%;
-    margin-left: max(5vw,10px);
-    margin-top: 20px;
-    font-size: 16px;
-}
 .add-category-price {
-  display: flex;
-  flex-direction: column;
-  
+    display: flex;
+    gap: 60px;
 }
- .add-category,.add-price{
-     width: 250px ;
-   }
-   .add-category select{
-    width: 240px;
+
+.add-category select,
+.add-price input {
+    padding: 5px;
+    border: none;
+    border-radius: 5px;
+}
+
+.add .btn-add {
+    width: 300px;
     padding: 10px;
-   }
-   .add-price input {
-     width: 220px;
-    padding: 10px;
-   }
-   
-  .add .btn-add{
-     width: 200px;
-     background: black;
-     color: white;
-     border: none;
-     padding: 3px;
-     margin-top: 20px;
-     border-radius: 5px;;
-   }
+    border: none;
+    border-radius: 10px;
+    margin-top: 30px;
+    background-color: black;
+    color: white;
+}
+
+@media (max-width:475px) {
+
+    .add-product-name,
+    .add-product-description {
+        width: 250px;
+    }
+
+    .add-product-name input,
+    .add-product-description textarea {
+        width: 220px;
+    }
+
+    .add form {
+        gap: 10px;
+    }
+
+    .add {
+        width: 70%;
+        margin-left: max(5vw, 10px);
+        margin-top: 20px;
+        font-size: 16px;
+    }
+
+    .add-category-price {
+        display: flex;
+        flex-direction: column;
+
+    }
+
+    .add-category,
+    .add-price {
+        width: 250px;
+    }
+
+    .add-category select {
+        width: 240px;
+        padding: 10px;
+    }
+
+    .add-price input {
+        width: 220px;
+        padding: 10px;
+    }
+
+    .add .btn-add {
+        width: 200px;
+        background: black;
+        color: white;
+        border: none;
+        padding: 3px;
+        margin-top: 20px;
+        border-radius: 5px;
+        ;
+    }
 }
