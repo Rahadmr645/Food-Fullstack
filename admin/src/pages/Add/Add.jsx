@@ -48,7 +48,6 @@ const Add = () => {
             }
         } catch (error) {
             console.error("Error submitting form:", error);
-            
             toast.error("Failed to add product. Please try again.");
         }
     };
