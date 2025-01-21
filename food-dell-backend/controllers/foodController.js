@@ -1,6 +1,5 @@
 import foodModel from "../models/foodModel.js";
 
-
 import fs from 'fs'
 
 // add food item 
@@ -27,72 +26,30 @@ const addFood = async (req,res) => {
 
 
 }
+// all food list
+const listFood = async (req,res) => {
+  try {
+    const foods = await foodModel.find({});
+    res.json({success:'true',data:foods})
+  } catch (error) {
+    console.log(error);
+    res.json({success:false,message:'error'});
+  }
+}
+
+// remove food items
+const removeFood = async (req,res) => {
+  try {
+    const food = await foodModel.findById(req.body.id);
+    fs.unlink(`uploads/${food.image}`,() =>{})
+    await foodModel.findByIdAndDelete(req.body.id);
+    res.json({success:true,message:"food Removed"});
+  } catch (error) {
+    console.log(error);
+    res.json({success:false,message:'error'})
+  }
+}
+
+export {addFood,listFood,removeFood};
 
 
-export {addFood};
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// // Add a food item
-// const addFood = async (req, res) => {
-//   try {
-//     // Ensure a file is uploaded
-//     if (!req.file) {
-//       return res.status(400).json({ success: false, message: "Image file is required." });
-//     }
-
-//     // Extract file details and request body
-//     const image_filename = `${process.env.STATIC_PATH}/${req.file.filename}`;
-
-//     const { name, description, price, category } = req.body;
-
-//     // Validate required fields
-//     if (!name || !description || !price || !category) {
-//       return res.status(400).json({ success: false, message: "All fields are required." });
-//     }
-
-//     // Create a new food document
-//     const food = new foodModel({
-//       name,
-//       description,
-//       price,
-//       category,
-//       image: image_filename,
-//     });
-
-//     // Save the food document to the database
-//     await food.save();
-
-//     res.status(201).json({ success: true, message: "Food added successfully." });
-//   } catch (error) {
-//     console.error("Error adding food:", error);
-
-//     // Handle unexpected errors
-//     res.status(500).json({
-//       success: false,
-//       message: "An error occurred while adding the food item.",
-//     });
-//   }
-// };
-
-// export { addFood };

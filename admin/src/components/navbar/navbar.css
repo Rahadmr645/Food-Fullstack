@@ -1,0 +1,25 @@
+
+
+.admin-navbar{
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 4%;
+    margin-top: 30px;
+}
+
+hr{
+    margin: 0px;
+    padding: 1px;
+    background-color: rgb(73, 71, 71);
+    border: none;
+}
+
+.admin-navbar>img {
+    width: max(10%,80px) ;
+}
+.admin-navbar .profile-image {
+   width: 40px;
+  
+}
