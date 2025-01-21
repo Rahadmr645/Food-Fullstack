@@ -1,11 +1,11 @@
 import react from 'react'
 import './App.css'
 import Navbar from './components/navbar/Navbar'
-import Sidebar from './components/sidebar/sidebar'
+import Sidebar from './components/sidebar/Sidebar'
 import { Routes,Route } from 'react-router-dom'
-import Add from './pages/add/Add'
-import List from './pages/list/List'
-import Order from './pages/orders/Order'
+import Add from './pages/Add/Add'
+import List from './pages/List/List'
+import Order from './pages/Orders/Order'
 
 function App() {
 
