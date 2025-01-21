@@ -8,6 +8,7 @@ import {connectToMongo} from './config/db.js';
 import  foodRouter from './routes/foodRoute.js';
 const PORT = 4420;
 
+app.use(cors());
 app.use(express.json());
 app.use('/uploads', express.static('uploads'));
 
