@@ -3,13 +3,12 @@ import './list.css';
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
-const List = () => {
-  const URL = 'http://localhost:4420';
+const List = ({url}) => {
   const [list, setList] = useState([]);
 
   const fetchList = async () => {
     try {
-      const response = await axios.get(`${URL}/api/food/list`);
+      const response = await axios.get(`${url}/api/food/list`);
       if (response.data.success) {
         setList(response.data.data); // Use the correct key for the list
       } else {
@@ -20,6 +19,20 @@ const List = () => {
       toast.error('Error fetching list. Please try again.');
     }
   };
+
+
+  // handle delete 
+
+  const handleDelete = async (foodid) => {
+    const response = await axios.post(`${url}/api/food/remove`, {id:foodid});
+    if (response.data.success) {
+      toast.success('Food Removed');
+      await fetchList();
+    } else {
+      toast.error('faild to remove')
+    }
+  
+  }
 
   useEffect(() => {
     fetchList();
@@ -35,10 +48,11 @@ const List = () => {
         <b>Price</b>
         <b>Action</b>
       </div>
+
       {list.length > 0 ? (
         list.map((item, index) => (
           <div key={index} className='list-table-format'>
-            <img src={`${URL}/uploads/${item.image}`} alt={item.name} />
+            <img src={`${url}/uploads/${item.image}`} alt={item.name} />
             <p>{item.name}</p>
             <p>{item.category}</p>
             <p>${item.price}</p>
@@ -49,6 +63,8 @@ const List = () => {
               Delete
             </button>
           </div>
+
+
         ))
       ) : (
         <p>No items found.</p>
