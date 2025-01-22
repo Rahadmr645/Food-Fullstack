@@ -34,12 +34,6 @@
     border: tomato;
 }
 
-.navlink {
-   text-decoration: none;
-
-   
-}
-
 @media (max-width:475px) {
     .sidebar-option p {
         display: none;
