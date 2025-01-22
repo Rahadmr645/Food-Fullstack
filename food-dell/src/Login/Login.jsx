@@ -28,10 +28,7 @@ const Login = ({ setShowlogin }) => {
     };
   }, [setShowlogin]);
 
-  useEffect(() => {
-    console.log(data)
-  }, [data])
-
+  
 
   // login
 const onLogin = async(e) => {

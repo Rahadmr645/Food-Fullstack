@@ -2,16 +2,32 @@ import React, { useContext, useEffect, useState } from 'react'
 import { assets } from '../assets/assets'
 
 import './Navbar.css'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate} from 'react-router-dom';
 import { StoreContext } from '../context/StoreConext';
 const Navbar = ({setShowlogin}) => {
-const {cartItems} = useContext(StoreContext);
+const {cartItems,token,setToken} = useContext(StoreContext);
   const [selected, setSelected] = useState('home');
 
   const [hasItems,setHasItems] = useState(false);
   useEffect(() => {
     setHasItems(Object.keys(cartItems).length > 0 );
   }, [cartItems]); 
+  
+  
+  const navigate = useNavigate();
+  //logout 
+  const logout = () => {
+    localStorage.removeItem("token")
+    setToken("");
+    navigate("/");
+  }
+  
+  useEffect(() => {
+  if (localStorage.getItem("token")) {
+    setToken(localStorage.getItem("token"));
+  }
+}, []);
+
   return (
     <div className='navbar-container container '>
       <div className="left">
@@ -32,7 +48,16 @@ const {cartItems} = useContext(StoreContext);
           <Link to='/carts' >  <img src={assets.basket_icon} alt="basket" /> </Link>
           <div className={hasItems ? 'dot':''}></div>
         </div>
-        <button onClick={() => setShowlogin(true)}>Sign in</button>
+        {!token? <button onClick={() => setShowlogin(true)}>Sign in</button>
+          :<div className='navbar-profile'>
+            <img src={assets.profile_icon} alt=''/>
+            <ul className='profile-dropdown'>
+           <li> <img src={assets.bag_icon} alt=''/> <p>Orders</p> </li>   
+           <hr/>
+             <li onClick={logout}> <img src={assets.logout_icon} alt=''/> <p>Logout</p> </li>   
+             </ul>
+          </div>
+        }
       </div>
     </div>
   )
