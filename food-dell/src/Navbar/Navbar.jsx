@@ -23,10 +23,13 @@ const {cartItems,token,setToken} = useContext(StoreContext);
   }
   
   useEffect(() => {
-  if (localStorage.getItem("token")) {
-    setToken(localStorage.getItem("token"));
+  const savedToken = localStorage.getItem('token');
+  if (savedToken) {
+    setToken(savedToken); // Set token if it exists in localStorage
+  } else {
+    setToken(''); // Clear token if it doesn't exist
   }
-}, []);
+}, [setToken]);
 
   return (
     <div className='navbar-container container '>
