@@ -5,13 +5,14 @@ import { assets } from '../assets/assets';
 import { StoreContext } from '../context/StoreConext';
 const Login = ({ setShowlogin }) => {
   const [currentState, setCurrentState] = useState('Sign Up');
-   const {url,setToken} = useContext(StoreContext);
+  const { url, setToken } = useContext(StoreContext);
   const [data, setData] = useState({
     name: '',
     email: '',
     password: ''
   })
- 
+
+
   const onChangeHandler = (e) => {
     const { name, value } = e.target;
     setData(data => ({ ...data, [name]: value }))
@@ -28,27 +29,35 @@ const Login = ({ setShowlogin }) => {
     };
   }, [setShowlogin]);
 
-  
+
 
   // login
-const onLogin = async(e) => {
-     e.preventDefault();
-     let newUrl = url;
-     if(currentState==='Login'){
+  const onLogin = async (e) => {
+    e.preventDefault();
+    let newUrl = url;
+    if (currentState === 'Login') {
       newUrl += "/api/user/login"
-     } else {
+    } else {
       newUrl += "/api/user/register"
-     }
+    }
 
-     const response = await axios.post(newUrl,data);
-     if(response.data.success) {
-        setToken(response.data.token);
-        localStorage.setItem("token",response.data.token);
-        setShowlogin(false);
-     } else{
-        alert(response.data.message)
-     }
-}
+    const response = await axios.post(newUrl, data);
+    if (response.data.success) {
+      setToken(response.data.token);
+      localStorage.setItem("token", response.data.token);
+      setShowlogin(false);
+    } else {
+      alert(response.data.message)
+    }
+     
+    // make input clear 
+    setData({
+      name: '',
+      email: '',
+      password: ''
+    })
+
+  }
 
 
   return (

@@ -13,7 +13,7 @@ const {cartItems,token,setToken} = useContext(StoreContext);
     setHasItems(Object.keys(cartItems).length > 0 );
   }, [cartItems]); 
   
-  
+     
   const navigate = useNavigate();
   //logout 
   const logout = () => {
@@ -21,12 +21,16 @@ const {cartItems,token,setToken} = useContext(StoreContext);
     setToken("");
     navigate("/");
   }
-  
-  useEffect(() => {
-  if (localStorage.getItem("token")) {
-    setToken(localStorage.getItem("token"));
+
+
+useEffect(() => {
+  const savedToken = localStorage.getItem('token');
+  if (savedToken) {
+    setToken(savedToken);
+  } else {
+    setToken(""); 
   }
-}, []);
+}, [setToken]);
 
   return (
     <div className='navbar-container container '>
@@ -48,7 +52,7 @@ const {cartItems,token,setToken} = useContext(StoreContext);
           <Link to='/carts' >  <img src={assets.basket_icon} alt="basket" /> </Link>
           <div className={hasItems ? 'dot':''}></div>
         </div>
-        {!token? <button onClick={() => setShowlogin(true)}>Sign in</button>
+        {!token ? <button onClick={() => setShowlogin(true)}>Sign in</button>
           :<div className='navbar-profile'>
             <img src={assets.profile_icon} alt=''/>
             <ul className='profile-dropdown'>
