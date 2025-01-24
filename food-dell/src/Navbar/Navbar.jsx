@@ -21,6 +21,7 @@ const {cartItems,token,setToken} = useContext(StoreContext);
     setToken("");
     navigate("/");
   }
+<<<<<<< HEAD
 
 
 useEffect(() => {
@@ -29,6 +30,15 @@ useEffect(() => {
     setToken(savedToken);
   } else {
     setToken(""); 
+=======
+  
+  useEffect(() => {
+  const savedToken = localStorage.getItem('token');
+  if (savedToken) {
+    setToken(savedToken); // Set token if it exists in localStorage
+  } else {
+    setToken(''); // Clear token if it doesn't exist
+>>>>>>> 6fe359816e76eff5bc5ecd1a44a2ddcd2c17df84
   }
 }, [setToken]);
 
