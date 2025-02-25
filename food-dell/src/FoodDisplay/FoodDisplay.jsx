@@ -9,7 +9,7 @@ const FoodDisplay = ({ id, image, name, price, desc }) => {
     return (
         <div className='container display-container'>
             <div className="image-box">
-                <img src={url+"/image/"+image} alt="" />
+                <img src={url+"/uploads/"+image} alt="faild" />
                 <Counter id={id} />
             </div>
             <div className="info-box p-1">

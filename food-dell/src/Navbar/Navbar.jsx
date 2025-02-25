@@ -2,18 +2,18 @@ import React, { useContext, useEffect, useState } from 'react'
 import { assets } from '../assets/assets'
 
 import './Navbar.css'
-import { Link, useNavigate} from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { StoreContext } from '../context/StoreConext';
-const Navbar = ({setShowlogin}) => {
-const {cartItems,token,setToken} = useContext(StoreContext);
+const Navbar = ({ setShowlogin }) => {
+  const { cartItems, token, setToken ,userName} = useContext(StoreContext);
   const [selected, setSelected] = useState('home');
 
-  const [hasItems,setHasItems] = useState(false);
+  const [hasItems, setHasItems] = useState(false);
   useEffect(() => {
-    setHasItems(Object.keys(cartItems).length > 0 );
-  }, [cartItems]); 
-  
-     
+    setHasItems(Object.keys(cartItems).length > 0);
+  }, [cartItems]);
+
+
   const navigate = useNavigate();
   //logout 
   const logout = () => {
@@ -21,26 +21,17 @@ const {cartItems,token,setToken} = useContext(StoreContext);
     setToken("");
     navigate("/");
   }
-<<<<<<< HEAD
 
 
-useEffect(() => {
-  const savedToken = localStorage.getItem('token');
-  if (savedToken) {
-    setToken(savedToken);
-  } else {
-    setToken(""); 
-=======
-  
   useEffect(() => {
-  const savedToken = localStorage.getItem('token');
-  if (savedToken) {
-    setToken(savedToken); // Set token if it exists in localStorage
-  } else {
-    setToken(''); // Clear token if it doesn't exist
->>>>>>> 6fe359816e76eff5bc5ecd1a44a2ddcd2c17df84
-  }
-}, [setToken]);
+    const savedToken = localStorage.getItem('token');
+    if (savedToken) {
+      setToken(savedToken); // Set token if it exists in localStorage
+    } else {
+      setToken(''); // Clear token if it doesn't exist
+
+    }
+  }, [setToken]);
 
   return (
     <div className='navbar-container container '>
@@ -60,16 +51,18 @@ useEffect(() => {
         <img src={assets.search_icon} alt="" />
         <div className="basket">
           <Link to='/carts' >  <img src={assets.basket_icon} alt="basket" /> </Link>
-          <div className={hasItems ? 'dot':''}></div>
+          <div className={hasItems ? 'dot' : ''}></div>
         </div>
         {!token ? <button onClick={() => setShowlogin(true)}>Sign in</button>
-          :<div className='navbar-profile'>
-            <img src={assets.profile_icon} alt=''/>
+          : <div className='navbar-profile'>
+            {/* <img src={assets.profile_icon} alt='' /> 
+            */}
+            <p>{userName}</p>
             <ul className='profile-dropdown'>
-           <li> <img src={assets.bag_icon} alt=''/> <p>Orders</p> </li>   
-           <hr/>
-             <li onClick={logout}> <img src={assets.logout_icon} alt=''/> <p>Logout</p> </li>   
-             </ul>
+              <li> <img onClick={() => window.location.href = 'http://localhost:5174/'} src={assets.bag_icon} alt='' /> <p>Orders</p> </li>
+              <hr />
+              <li onClick={logout}> <img src={assets.logout_icon} alt='' /> <p>Logout</p> </li>
+            </ul>
           </div>
         }
       </div>

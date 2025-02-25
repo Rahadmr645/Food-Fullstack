@@ -4,7 +4,7 @@ import { StoreContext } from '../context/StoreConext';
 import { Link } from 'react-router-dom';
 const Carts = () => {
 
-  const { cartItems, removeFromCart, food_list,Subtotal,deliveryFee,Total } = useContext(StoreContext);
+  const { cartItems, removeFromCart, foodList,Subtotal,deliveryFee,Total,url } = useContext(StoreContext);
 
   // calculate subtotal and total 
 
@@ -30,12 +30,12 @@ const Carts = () => {
 
       </div>
       <div className="cart-info"  >
-        {food_list.map((item, index) => {
+        {foodList.map((item, index) => {
           if (cartItems[item._id] > 0) {
             return (
               <>
                 <div className="carts-item-title cart-foodlist ">
-                  <img src={item.image} alt='' />
+                  <img src={url+"/uploads/"+item.image} alt='' />
                   <p>{item.name}</p>
                   <p>${item.price}</p>
                   <p>{cartItems[item._id]}</p>
@@ -46,7 +46,7 @@ const Carts = () => {
               </>
             )
           }
-        })}
+        })};
       </div>
       <div className='carts-bottom'>
         <div className='carts-totals'>
@@ -76,7 +76,7 @@ const Carts = () => {
       </div>
     </div>
 
-  )
+  );
 }
 
 export default Carts

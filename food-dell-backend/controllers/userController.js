@@ -18,7 +18,7 @@ const loginUser = async (req, res) => {
         if (!isMatch) {
             return res.json({ success: false, message: "Invalid crandintial" });
         }
-        const token = createToken(user._id);
+        const token = createToken(user._id,user.name);
         res.json({ success: true, token });
 
     } catch (error) {
@@ -29,8 +29,8 @@ const loginUser = async (req, res) => {
 
 // cratge jwt token
 
-const createToken = (id) => {
-    return jwt.sign({ id }, process.env.JWT_SECRET, { expiresIn: '2d' })
+const createToken = (id,name) => {
+    return jwt.sign({ id,name }, process.env.JWT_SECRET, { expiresIn: '2d' })
 }
 
 
@@ -62,7 +62,7 @@ const registerUser = async (req, res) => {
             password: hashedPassword
         })
         const user = await newUser.save();
-        const token = createToken(user._id)
+        const token = createToken(user._id,user.name)
         res.json({ success: true, token, user });
     } catch (error) {
         console.log(error)

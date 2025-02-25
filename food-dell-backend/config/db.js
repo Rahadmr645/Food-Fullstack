@@ -1,24 +1,26 @@
-import mongoose from 'mongoose';
 
+// export {connectToMongo};
+
+import mongoose from 'mongoose';
 import dotenv from 'dotenv';
 
-dotenv.config();;
+dotenv.config();
 
 const connectToMongo = async () => {
-
     const mongo_url = process.env.MONGO_URL;
 
-    try {
-        await mongoose.connect(mongo_url,
-            {
-                useNewUrlParser: true, useUnifiedTopology: true
-            });
-        console.log('DB connected')
-    } catch (error) {
-        console.error('Faild to connect to mongodb', error.message);
+    if (!mongo_url) {
+        console.error("MongoDB connection URL is missing in environment variables.");
+        return;
     }
 
-}
+    try {
+        await mongoose.connect(mongo_url);
+        console.log('✅ MongoDB connected successfully');
+    } catch (error) {
+        console.error('❌ Failed to connect to MongoDB:', error);
+        process.exit(1); // Exit the process if DB connection fails
+    }
+};
 
-
-export {connectToMongo};
+export { connectToMongo };

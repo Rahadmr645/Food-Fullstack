@@ -6,7 +6,7 @@ const Sidebar = () => {
     return (
         <div className='sidebar-container'>
             <div className="sidebar-options">
-                <NavLink to='/add'className="sidebar-option">
+                <NavLink to='/'className="sidebar-option">
                     <img src={assets.add_icon} alt="" />
                     <p>add Items</p>
                 </NavLink>
