@@ -1,37 +1,36 @@
 import { createContext, useEffect, useState } from "react";
 import Cookies from 'js-cookie'
-// import jwtDecode from 'jwt-decode';
-import jwtDecode from "jwt-decode";
-// import { decode } from 'jwt-decode';
-// import jwtDecode from 'jwt-decode/dist/jwt-decode';  
-export const Context = createContext();
 
-// const jwtDecode = require('jwt-decode'); 
+export const Context = createContext();
+ 
 export const StoreContextProvider = ({children}) => {
 
     const [username, setUsername] = useState("");
 
-
-    useEffect(() => {
+   
+    const decodeToken = (token) => {
         try {
-            // get the token from cookies
-            const token = Cookies.get("token");
            
-            if(token) {
-                // decode the user token
-                const decoded = jwtDecode(token);
-                console.log("Decoded Token:", decoded);
+            if(!token) return "Guest";
+
+            // decode jwt payload safely
+            const base64Url = token.split(".")[1];
+            const base64 = base64Url.replace(/-/g, "+").replace(/_/g, "/");
+            const payload = JSON.parse(atob(base64));
 
 
-                // Extract username or email
-                setUsername(decoded.name || decoded.id)
-            }
-         
+            return payload?.name || "Guest";
+
         } catch (error) {
-            console.log("Error decoding token:", error)
+            console.error("Invalid token:", error);
+            return "Guest"
         }
-    },[])
+    }
 
+    useEffect(() =>{
+        const token = Cookies.get("token");
+        setUsername(decodeToken(token));
+    },[]);
     const contextValue = {
         username,
         setUsername,
