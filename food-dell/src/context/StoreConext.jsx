@@ -8,13 +8,13 @@ export const StoreContext = createContext(null);
 const StoreContextProvider = (props) => {
     const url = 'http://localhost:4420';
 
-    // ✅ Use Cookies to store token instead of localStorage
+    //  Use Cookies to store token instead of localStorage
     const [token, setToken] = useState(() => Cookies.get('token') || '');  // Get token from Cookies
     const [cartItems, setCartItems] = useState({});
     const [foodList, setFoodList] = useState([]);
     const [userName, setUserName] = useState('');
-
-    // ✅ Decode JWT token safely
+ 
+    // Decode JWT token safely
     const decodeToken = (token) => {
         try {
             if (!token) return "Guest";  
@@ -26,7 +26,7 @@ const StoreContextProvider = (props) => {
         }
     };
 
-    // ✅ Set token from Cookies & update username on mount
+    //  Set token from Cookies & update username on mount
     useEffect(() => {
         const storedToken = Cookies.get('token');  // Get token from Cookies
         if (storedToken) {
@@ -36,7 +36,7 @@ const StoreContextProvider = (props) => {
         }
     }, []);
 
-    // ✅ Sync token across tabs
+    // Sync token across tabs
     useEffect(() => {
         const handleStorageChange = (event) => {
             if (event.key === 'token') {
@@ -52,12 +52,12 @@ const StoreContextProvider = (props) => {
         };
     }, []);
 
-    // ✅ Log whenever token updates
+    //  Log whenever token updates
     useEffect(() => {
         console.log("Token updated:", token);
     }, [token]);
 
-    // ✅ Ensure token updates in Cookies when setToken is called
+    //  Ensure token updates in Cookies when setToken is called
     useEffect(() => {
         if (token) {
             Cookies.set('token', token, { expires: 2 });  // Set token in Cookies with expiry of 2 days
@@ -66,7 +66,7 @@ const StoreContextProvider = (props) => {
         }
     }, [token]);
 
-    // ✅ Fetch food list
+    //  Fetch food list
     const fetchFoodList = async () => {
         try {
             const response = await axios.get(`${url}/api/food/list`);

@@ -3,10 +3,14 @@ import { useContext } from 'react'
 import { Context } from '../../context/StoreContext'
 
 const Order = () => {
-  const { username } = useContext(Context);
+  const { user } = useContext(Context);
   return (
     <div>Order
-      {username}
+      {user.username}
+      <div>
+        <img src={user.profileImage} alt="note" />
+      </div>
+
     </div>
   )
 }

@@ -26,7 +26,7 @@ function App() {
             <Route path='/list' element={<List url={url} />} />
             <Route path='/order' element={<Order url={url} />} />
             <Route path='/profile' element={<Profile />} />
-            <Route path="*" element={<h1>404 - Page Not Found</h1>} />
+          
           </Routes>
         </div>
       </div>
