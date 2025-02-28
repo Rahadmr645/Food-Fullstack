@@ -13,6 +13,15 @@ app.use(cors());
 app.use(express.json());
 app.use('/uploads', express.static('uploads'));
 
+// Serve static files from the "public" directory
+app.use(express.static(path.join(__dirname, "public")));
+
+
+// Favicon route (just to handle the request)
+app.get("/favicon.ico", (req, res) => {
+  res.sendFile(path.join(__dirname, "public", "favicon.ico"));
+});
+
 // router end point 
 app.use('/api/food', foodRouter);
 app.use('/api/user', userRouter);
