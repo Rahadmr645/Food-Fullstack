@@ -6,7 +6,7 @@ import axios from "axios";
 export const StoreContext = createContext(null);
 
 const StoreContextProvider = (props) => {
-    const url = 'http://localhost:4420';
+    const url = 'https://food-fullstack-h7y8.vercel.app';
 
     //  Use Cookies to store token instead of localStorage
     const [token, setToken] = useState(() => Cookies.get('token') || '');  // Get token from Cookies
