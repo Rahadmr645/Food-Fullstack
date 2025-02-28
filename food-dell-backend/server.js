@@ -7,6 +7,7 @@ import 'dotenv/config';
 import {connectToMongo} from './config/db.js';
 import  foodRouter from './routes/foodRoute.js';
 import userRouter from './routes/userRoute.js';
+import path from 'path';
 const PORT = 4420;
 
 app.use(cors());
