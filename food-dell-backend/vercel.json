@@ -2,22 +2,22 @@
     "version": 2,
     "builds": [
       {
-        "src": "food-dell-backend/server.js",
+        "src": "food-dell-backend/server.js", 
         "use": "@vercel/node"
       },
       {
-        "src": "client/build/**/*",
+        "src": "food-dell/build/**/*",
         "use": "@vercel/static"
       }
     ],
     "routes": [
       {
         "src": "/api/(.*)",
-        "dest": "/food-dell-backend/server.js"
+        "dest": "food-dell-backend/server.js"
       },
       {
         "src": "/(.*)",
-        "dest": "/client/build/$1"
+        "dest": "food-dell/build/$1"
       }
     ]
   }
